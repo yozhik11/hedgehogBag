@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G72" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AllFilesModel" representedClassName="AllFilesModel" syncable="YES">
+        <attribute name="created" optional="YES" attributeType="String"/>
+        <attribute name="file" optional="YES" attributeType="String"/>
+        <attribute name="md5" optional="YES" attributeType="String"/>
+        <attribute name="media_type" optional="YES" attributeType="String"/>
+        <attribute name="mime_type" optional="YES" attributeType="String"/>
+        <attribute name="modified" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="path" optional="YES" attributeType="String"/>
+        <attribute name="preview" optional="YES" attributeType="Binary"/>
+        <attribute name="public_key" optional="YES" attributeType="String"/>
+        <attribute name="public_url" optional="YES" attributeType="String"/>
+        <attribute name="resource_id" optional="YES" attributeType="String"/>
+        <attribute name="revision" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="size" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="toAllFilesList" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="AllFilesModelList" inverseName="items" inverseEntity="AllFilesModelList"/>
+    </entity>
+    <entity name="AllFilesModelList" representedClassName=".AllFilesModelList" syncable="YES">
+        <attribute name="limit" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="offset" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="path" optional="YES" attributeType="String"/>
+        <attribute name="sort" optional="YES" attributeType="String"/>
+        <attribute name="total" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="items" optional="YES" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="AllFilesModel" inverseName="toAllFilesList" inverseEntity="AllFilesModel"/>
+        <relationship name="toEmbedded" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Embedded" inverseName="toAllList" inverseEntity="Embedded"/>
+    </entity>
+    <entity name="Embedded" representedClassName="Embedded" syncable="YES">
+        <relationship name="toAllList" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AllFilesModelList" inverseName="toEmbedded" inverseEntity="AllFilesModelList"/>
+    </entity>
+    <entity name="FilesModel" representedClassName=".FilesModel" syncable="YES">
+        <attribute name="created" optional="YES" attributeType="String"/>
+        <attribute name="file" optional="YES" attributeType="String"/>
+        <attribute name="md5" optional="YES" attributeType="String"/>
+        <attribute name="media_type" optional="YES" attributeType="String"/>
+        <attribute name="mime_type" optional="YES" attributeType="String"/>
+        <attribute name="modified" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="path" optional="YES" attributeType="String"/>
+        <attribute name="preview" optional="YES" attributeType="Binary"/>
+        <attribute name="public_key" optional="YES" attributeType="String"/>
+        <attribute name="public_url" optional="YES" attributeType="String"/>
+        <attribute name="resource_id" optional="YES" attributeType="String"/>
+        <attribute name="revision" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="size" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="items" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LastFilesItems"/>
+    </entity>
+    <entity name="LastFilesItems" representedClassName="LastFilesItems" syncable="YES">
+        <relationship name="items" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FilesModel"/>
+    </entity>
+    <entity name="ProfileData" representedClassName=".ProfileData" syncable="YES">
+        <attribute name="totalSpace" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="trash" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="usedSpace" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="ResourceList" representedClassName="ResourceList" syncable="YES">
+        <attribute name="limit" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="offset" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="path" optional="YES" attributeType="String"/>
+        <attribute name="sort" optional="YES" attributeType="String"/>
+        <attribute name="total" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="items" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FilesModel"/>
+    </entity>
+</model>
